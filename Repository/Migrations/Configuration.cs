@@ -23,7 +23,7 @@ namespace Repository.Migrations
 
             var categoryExists = context.Categories.Where(c => c.Name == category.Name);
 
-            if (categoryExists is null)
+            if (categoryExists.Count() <= 0)
                 context.Categories.Add(category);
 
             //  This method will be called after migrating to the latest version.
