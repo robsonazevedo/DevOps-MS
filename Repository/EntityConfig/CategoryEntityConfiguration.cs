@@ -10,7 +10,7 @@ namespace Repository.EntityConfig
             // Caracteristicas da tabela no banco de dado
             HasKey(c => c.Id);
 
-            Property(c => c.Name)                
+            Property(c => c.Name)
                 .IsRequired()
                 .HasMaxLength(64);
 

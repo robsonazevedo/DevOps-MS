@@ -18,9 +18,10 @@ namespace Tests.Repository
             _repository = new BookRepository();
             _entity = new BookEntity
             {
-               Name = "Aprenda a Programar em C#",
-               PagesNumber = 8000,
-               Year = 2020
+                Name = "Aprenda a Programar em C#",
+                IsTest = true,
+                PagesNumber = 8000,
+                Year = 2020
             };
         }
 
@@ -42,7 +43,7 @@ namespace Tests.Repository
         [TestMethod]
         public void DeleteBookTest()
         {
-            var result = _repository.Delete(_entity.Id);
+            var result = _repository.Delete(_entity);
             Assert.IsTrue(result);
         }
 

@@ -39,10 +39,6 @@ namespace Repository.Context
                .Where(p => p.Name.Equals("IsTest", System.StringComparison.CurrentCultureIgnoreCase))
                .Configure(p => p.IsRequired());
 
-            modelBuilder.Entity<CategoryEntity>()
-                .HasIndex(c => c.Name)
-                .IsUnique();
-
             var bookConfig = new BookEntityConfiguration();
             var categoryConfig = new CategoryEntityConfiguration();
 

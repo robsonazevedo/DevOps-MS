@@ -18,9 +18,9 @@ namespace Tests.Repository
             _repository = new CategoryRepository();
             _entity = new CategoryEntity
             {
-                Description = "Action Category",
+                Description = "Livors de Ação",
                 IsTest = true,
-                Name = "Action"
+                Name = "Ação"
             };
         }
 
@@ -43,7 +43,7 @@ namespace Tests.Repository
         [TestMethod]
         public void DeleteCategoryTest()
         {
-            var result = _repository.Delete(_entity.Id);
+            var result = _repository.Delete(_entity);
             Assert.IsTrue(result);
         }
 
@@ -51,7 +51,7 @@ namespace Tests.Repository
         public void GetByIdCategoryTest()
         {
             var category = _repository.GetById(_entity.Id);
-            
+
             var result = _entity.CompareTo(category);
             Assert.IsTrue(result == 0);
         }
@@ -61,23 +61,23 @@ namespace Tests.Repository
         {
             var actionCategory = new CategoryEntity
             {
-                Description = "Comedy Category",
-                Name = "Comedy"
+                Description = "Livros de Comédia",
+                Name = "Comédio"
             };
 
             _repository.Add(actionCategory);
 
-            var categories = _repository.GetList(c => c.Name.Contains("Fiction")).ToList();
+            var categories = _repository.GetList(c => c.Name.Contains("Ficção")).ToList();
             var count = categories.Count();
 
-            Assert.IsTrue(count == 1 && categories[0].Name == "Comedy");
+            Assert.IsTrue(count == 1 && categories[0].Name == "Comédia");
         }
 
         [TestMethod]
         public void UpdateCategoryTest()
         {
-            _entity.Name = "Fiction";
-            _entity.Description = "Fiction Category";
+            _entity.Name = "Ficção";
+            _entity.Description = "Livros de Ficção";
 
             var resultUpdate = _repository.Update(_entity);
             var category = _repository.GetById(_entity.Id);

@@ -10,14 +10,15 @@ namespace Repository.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(LibraryContext context)
         {
             var category = new CategoryEntity
             {
-                Name = "Comédia",
-                Description = "Livros de comédia"
+                Name = "Romance",
+                Description = "Livros de Romance"
             };
 
             var categoryExists = context.Categories.Where(c => c.Name == category.Name);

@@ -3,6 +3,7 @@ using Domain.Repositories;
 using Repository.Context;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 
 namespace Repository.Repositories
@@ -18,22 +19,22 @@ namespace Repository.Repositories
             return entity;
         }
 
-        public bool Delete(int id)
+        public bool Delete(TEntity entity)
         {
-            throw new NotImplementedException();
+            Context.Set<TEntity>().Remove(entity);
+            Context.SaveChanges();
+            return true;
         }
 
         public void Dispose()
         {
             Context.Dispose();
+            GC.SuppressFinalize(this);
         }
 
         public TEntity GetById(int id) => Context.Set<TEntity>().Find(id);
 
-        public IEnumerable<TEntity> GetList(Expression<Func<TEntity, bool>> predicate)
-        {
-            throw new NotImplementedException();
-        }
+        public IEnumerable<TEntity> GetList(Expression<Func<TEntity, bool>> predicate) => Context.Set<TEntity>().Where(predicate);
 
         public bool Update(TEntity entity)
         {
