@@ -15,21 +15,36 @@ namespace Repository.Migrations
 
         protected override void Seed(LibraryContext context)
         {
-            var category = new CategoryEntity
+            var categoryRomance = new CategoryEntity
             {
                 Name = "Romance",
                 Description = "Livros de Romance"
             };
 
-            var categoryExists = context.Categories.Where(c => c.Name == category.Name);
+            var categoryMagia = new CategoryEntity
+            {
+                Name = "Magia",
+                Description = "Livros de Magia"
+            };
 
-            if (categoryExists.Count() <= 0)
-                context.Categories.Add(category);
+            var categoryFiccao = new CategoryEntity
+            {
+                Name = "Ficção",
+                Description = "Livros de Ficção"
+            };
 
-            //  This method will be called after migrating to the latest version.
+            var categoryRomanceExists = context.Categories.Where(c => c.Name == categoryRomance.Name);
+            var categoryMagiaExists = context.Categories.Where(c => c.Name == categoryMagia.Name);
+            var categoryFiccaoExists = context.Categories.Where(c => c.Name == categoryFiccao.Name);
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method
-            //  to avoid creating duplicate seed data.
+            if (categoryRomanceExists.Count() <= 0)
+                context.Categories.Add(categoryRomance);
+
+            if (categoryMagiaExists.Count() <= 0)
+                context.Categories.Add(categoryMagia);
+
+            if (categoryFiccaoExists.Count() <= 0)
+                context.Categories.Add(categoryFiccao);
         }
     }
 }
