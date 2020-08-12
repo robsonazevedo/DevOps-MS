@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace Domain.Interfaces.Repositories
+namespace Domain.Interfaces.Services
 {
-    public interface IRepositoryBase<TEntity> where TEntity : EntityBase
+    public interface IServiceBase<TEntity> where TEntity : EntityBase
     {
         TEntity Add(TEntity entity);
         bool Delete(TEntity entity);
