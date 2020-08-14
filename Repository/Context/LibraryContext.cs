@@ -10,7 +10,7 @@ namespace Repository.Context
 {
     public class LibraryContext : DbContext
     {
-        public LibraryContext() : base("Server=p42.database.windows.net;Database=DBLibrary;User Id=devops;Password=libraryP42@2020;") { }
+        public LibraryContext() : base(ConfigurationManager.ConnectionStrings["SQLServerConnectionString"].ToString()) { }
 
         public DbSet<BookEntity> Books { get; set; }
         public DbSet<CategoryEntity> Categories { get; set; }
