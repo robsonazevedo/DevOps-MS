@@ -1,6 +1,7 @@
 ﻿using Domain.Entities;
 using Domain.Services;
 using Repository.Repositories;
+using System.Linq;
 
 namespace App.Console
 {
@@ -8,8 +9,29 @@ namespace App.Console
     {
         static void Main(string[] args)
         {
-            //Add();
+            //AddCategory();
             List();
+            AddBook();
+
+            System.Console.ReadKey();
+        }
+
+        private static void AddBook()
+        {
+            var book = new BookEntity();
+            
+            book.Name = "It a coisa";
+            book.Year = 2020;
+            book.PagesNumber = 1000;
+            book.BookCategory = new BookCategoryEntity
+            {
+                CategoryId = 1,
+                BookId = book.Id
+            };
+
+
+
+
         }
 
         private static void List()
@@ -23,11 +45,10 @@ namespace App.Console
                     System.Console.WriteLine(c.Name);
                 }
 
-                System.Console.ReadKey();
             };
         }
 
-        private static void Add()
+        private static void AddCategory()
         {
             System.Console.Write("Nome Categoria: ");
             var name = System.Console.ReadLine();

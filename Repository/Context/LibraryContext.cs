@@ -41,9 +41,11 @@ namespace Repository.Context
 
             var bookConfig = new BookEntityConfiguration();
             var categoryConfig = new CategoryEntityConfiguration();
+            var bookCategoryConfig = new BookCategoryConfiguration();
 
             modelBuilder.Configurations.Add(bookConfig);
             modelBuilder.Configurations.Add(categoryConfig);
+            modelBuilder.Configurations.Add(bookCategoryConfig);
         }
 
         public override int SaveChanges()

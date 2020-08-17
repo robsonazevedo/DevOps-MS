@@ -21,7 +21,7 @@ namespace Repository.EntityConfig
             ToTable("Book");
             Property(b => b.Name).HasColumnName("Name");
             Property(b => b.PagesNumber).HasColumnName("PagesNumber");
-            Property(b => b.Year).HasColumnName("ColYear");
+            Property(b => b.Year).HasColumnName("Year");
         }
     }
 }
