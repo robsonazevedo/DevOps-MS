@@ -7,7 +7,6 @@ namespace Repository.EntityConfig
     {
         public CategoryEntityConfiguration()
         {
-            // Caracteristicas da tabela no banco de dado
             HasKey(c => c.Id);
 
             Property(c => c.Name)
@@ -17,8 +16,8 @@ namespace Repository.EntityConfig
             Property(c => c.Description)
                 .IsRequired();
 
-            // Nomemclaturas de Tabela colunas no banco de dados
             ToTable("Category");
+            Property(c => c.Id).HasColumnName("CategoryId");
         }
     }
 }

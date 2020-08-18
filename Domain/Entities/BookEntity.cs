@@ -9,9 +9,6 @@ namespace Domain.Entities
         public string Name { get; set; }
         public int PagesNumber { get; set; }
         public int Year { get; set; }
-        public BookCategoryEntity BookCategory { get; set; }
-
-        public bool CategoryExists() => BookCategory.BookId > 0 && BookCategory.CategoryId > 0;
 
     }
 }

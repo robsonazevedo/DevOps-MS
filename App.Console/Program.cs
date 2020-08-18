@@ -1,74 +1,48 @@
-﻿using Domain.Entities;
-using Domain.Services;
-using Repository.Repositories;
-using System.Linq;
+﻿using App.Console.Enumerators;
+using App.Console.Helper;
+using System;
 
 namespace App.Console
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            //AddCategory();
-            List();
-            AddBook();
-
-            System.Console.ReadKey();
-        }
-
-        private static void AddBook()
-        {
-            var book = new BookEntity();
-            
-            book.Name = "It a coisa";
-            book.Year = 2020;
-            book.PagesNumber = 1000;
-            book.BookCategory = new BookCategoryEntity
+            try
             {
-                CategoryId = 1,
-                BookId = book.Id
-            };
+                var isContinue = true;
+                var menuConsoleOption = ViewMenuHelper.ViewConsoleMenu();
 
-
-
-
-        }
-
-        private static void List()
-        {
-            using (var svsCategory = new CategoryService(new CategoryRepository()))
-            {
-                var categories = svsCategory.GetList(c => c.Id > 0);
-
-                foreach (var c in categories)
+                while (isContinue)
                 {
-                    System.Console.WriteLine(c.Name);
+
+                    switch (menuConsoleOption)
+                    {
+                        case MenuConsoleOptions.Book:
+                            {
+                                var menuBookOption = ViewMenuHelper.ViewBookMenu();
+                                ExecuteOptionHelper.ExecuteBookOption(menuBookOption);
+                                break;
+                            }
+                        case MenuConsoleOptions.Category:
+                            {
+                                var menuCategoryOption = ViewMenuHelper.ViewCategoryMenu();
+                                ExecuteOptionHelper.ExecuteCategoryOption(menuCategoryOption);
+                                break;
+                            }
+                        default:
+                            {
+                                isContinue = true;
+                                break;
+                            }
+                    }
                 }
-
-            };
-        }
-
-        private static void AddCategory()
-        {
-            System.Console.Write("Nome Categoria: ");
-            var name = System.Console.ReadLine();
-
-            System.Console.WriteLine();
-
-            System.Console.Write("Descrição Categoria: ");
-            var description = System.Console.ReadLine();
-
-            var svsBook = new BookService(new BookRepository());
-            var svsCategory = new CategoryService(new CategoryRepository());
-
-            svsCategory.Add(new CategoryEntity
+            }
+            catch (Exception ex)
             {
-                Name = name,
-                Description = description
-            });
-
-            svsBook.Dispose();
-            svsCategory.Dispose();
+                System.Console.Clear();
+                ViewMenuHelper.ViewError(ex.ToString());
+            }
         }
     }
 }

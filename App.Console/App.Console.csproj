@@ -53,6 +53,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enumerators\MenuBookOptions.cs" />
+    <Compile Include="Enumerators\MenuCategoryOptions.cs" />
+    <Compile Include="Enumerators\MenuConsoleOptions.cs" />
+    <Compile Include="Helper\ExecuteOptionHelper.cs" />
+    <Compile Include="Helper\ViewMenuHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

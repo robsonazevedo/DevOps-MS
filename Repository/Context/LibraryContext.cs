@@ -32,20 +32,28 @@ namespace Repository.Context
                 .Configure(p => p.HasMaxLength(256));
 
             modelBuilder.Properties<DateTime>()
-                .Where(p => p.Name.Equals("DateInsert", System.StringComparison.CurrentCultureIgnoreCase))
+                .Where(p => p.Name.Equals("DateInsert", StringComparison.CurrentCultureIgnoreCase))
                 .Configure(p => p.IsRequired());
 
             modelBuilder.Properties<DateTime>()
-               .Where(p => p.Name.Equals("IsTest", System.StringComparison.CurrentCultureIgnoreCase))
+               .Where(p => p.Name.Equals("IsTest", StringComparison.CurrentCultureIgnoreCase))
                .Configure(p => p.IsRequired());
 
             var bookConfig = new BookEntityConfiguration();
             var categoryConfig = new CategoryEntityConfiguration();
-            var bookCategoryConfig = new BookCategoryConfiguration();
 
             modelBuilder.Configurations.Add(bookConfig);
             modelBuilder.Configurations.Add(categoryConfig);
-            modelBuilder.Configurations.Add(bookCategoryConfig);
+
+            modelBuilder.Entity<BookEntity>()
+              .HasMany(b => b.Categories)
+              .WithMany(c => c.Books)
+              .Map(cs =>
+              {
+                  cs.MapLeftKey("BookId");
+                  cs.MapRightKey("CategoryId");
+                  cs.ToTable("BookCategory");
+              });
         }
 
         public override int SaveChanges()
