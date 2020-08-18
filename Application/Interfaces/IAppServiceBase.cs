@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace Domain.Interfaces.Services
+namespace Application.Interfaces
 {
-    public interface IServiceBase<TEntity> : IDisposable where TEntity : EntityBase
+    public interface IAppServiceBase<TEntity> : IDisposable where TEntity : EntityBase
     {
         TEntity Add(TEntity entity);
         bool Delete(TEntity entity);

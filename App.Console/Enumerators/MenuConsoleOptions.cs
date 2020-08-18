@@ -2,7 +2,8 @@
 {
     public enum MenuConsoleOptions
     {
-        Book,
-        Category
+        Book = 1,
+        Category = 2,
+        Exit = 3
     }
 }

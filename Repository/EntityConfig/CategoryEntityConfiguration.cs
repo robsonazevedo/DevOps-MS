@@ -11,7 +11,7 @@ namespace Repository.EntityConfig
 
             Property(c => c.Name)
                 .IsRequired()
-                .HasMaxLength(64);
+                .HasMaxLength(32);
 
             Property(c => c.Description)
                 .IsRequired();

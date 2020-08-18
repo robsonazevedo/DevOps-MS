@@ -2,10 +2,10 @@
 {
     public enum MenuBookOptions
     {
-        Search,
-        List,
-        Add,
-        Update,
-        Delete
+        Search = 1,
+        List = 2,
+        Add = 3,
+        Update = 4,
+        Delete = 5
     }
 }

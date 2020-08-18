@@ -1,7 +1,6 @@
 ﻿using Domain.Entities;
 using Domain.Interfaces.Repositories;
 using Domain.Interfaces.Services;
-using System.Collections.Generic;
 
 namespace Domain.Services
 {
@@ -12,7 +11,5 @@ namespace Domain.Services
         public BookService(IBookRepository repository) : base(repository) {
             _repository = repository;
         }
-
-        public bool UpdateList(IEnumerable<BookEntity> books) => _repository.UpdateList(books);
     }
 }

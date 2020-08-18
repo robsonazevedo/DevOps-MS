@@ -8,7 +8,7 @@ using System.Linq.Expressions;
 
 namespace Repository.Repositories
 {
-    public class RepositoryBase<TEntity> : IDisposable, IRepositoryBase<TEntity> where TEntity : EntityBase
+    public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : EntityBase
     {
         protected LibraryContext Context = new LibraryContext();
 
