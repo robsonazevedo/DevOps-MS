@@ -8,21 +8,29 @@ namespace App.Console.Helper
 {
     internal static class ViewMenuHelper
     {
+        public static string GetView(string view)
+        {
+            using (var sr = new StreamReader($@"Templates\{view}.txt", Encoding.UTF8))
+            {
+                return sr.ReadToEnd();
+            }
+        }
+
         public static MenuBookOptions ViewBookMenu()
         {
             System.Console.WriteLine(GetView("menu-book"));
-            System.Console.SetCursorPosition(9, 12);
+            System.Console.SetCursorPosition(9, 13);
 
-            var option = GetOption();
+            var option = SystemHelper.GetOption();
             return (MenuBookOptions)option;
         }
 
         public static MenuCategoryOptions ViewCategoryMenu()
         {
             System.Console.WriteLine(GetView("menu-category"));
-            System.Console.SetCursorPosition(9, 12);
+            System.Console.SetCursorPosition(9, 13);
 
-            var option = GetOption();
+            var option = SystemHelper.GetOption();
             return (MenuCategoryOptions)option;
         }
 
@@ -31,54 +39,14 @@ namespace App.Console.Helper
             System.Console.WriteLine(GetView("menu"));
             System.Console.SetCursorPosition(9, 10);
 
-            var option = GetOption();
+            var option = SystemHelper.GetOption();
             return (MenuConsoleOptions)option;
         }
 
-        public static void ViewError(string error)
+        public static void ViewError(string err)
         {
             System.Console.WriteLine(GetView("error"));
-            System.Console.Write(error, error.IndexOf('_'), error.Count());
-        }
-
-        private static string GetView(string view)
-        {
-            using (var sr = new StreamReader($@"Templates\{view}.txt", Encoding.UTF8))
-            {
-                return sr.ReadToEnd();
-            }
-        }
-
-        private static int GetOption()
-        {
-            var option = "";
-            ConsoleKeyInfo key;
-
-            do
-            {
-                key = System.Console.ReadKey(true);
-                if (key.Key != ConsoleKey.Backspace)
-                {
-                    bool _x = double.TryParse(key.KeyChar.ToString(), out _);
-                    if (_x && option.Length == 0)
-                    {
-                        option += key.KeyChar;
-                        System.Console.Write(key.KeyChar);
-                    }
-                }
-                else
-                {
-                    if (key.Key == ConsoleKey.Backspace && option.Length > 0)
-                    {
-                        option = option.Substring(0, (option.Length - 1));
-                        System.Console.Write("\b \b");
-                    }
-                }
-            }
-
-            while (key.Key != ConsoleKey.Enter);
-
-            return Convert.ToInt32(string.IsNullOrEmpty(option) ? "0" : option);
+            System.Console.Write(err, err.IndexOf('_'), err.Count());
         }
     }
 }

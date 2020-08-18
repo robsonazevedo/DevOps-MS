@@ -9,6 +9,7 @@ namespace Domain.Services
 {
     public class ServiceBase<TEntity> : IServiceBase<TEntity> where TEntity : EntityBase
     {
+        private bool _disposed;
         private readonly IRepositoryBase<TEntity> _repository;
 
         public ServiceBase(IRepositoryBase<TEntity> repository)
@@ -26,7 +27,7 @@ namespace Domain.Services
 
         public void Dispose()
         {
-            _repository.Dispose();
+            Dispose(true);
             GC.SuppressFinalize(this);
         }
 
@@ -38,6 +39,21 @@ namespace Domain.Services
         {
             _repository.Update(entity);
             return true;
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (_disposed)
+            {
+                return;
+            }
+
+            if (disposing)
+            {
+                _repository?.Dispose();
+            }
+
+            _disposed = true;
         }
     }
 }

@@ -1,22 +1,24 @@
 ﻿using Application;
+using Domain.Entities;
 using Domain.Services;
 using Repository.Repositories;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace App.Console.Executions
 {
-    public class ExecuteCategory : IExecuteBase
+    internal class ExecuteCategory : IExecuteBase<CategoryEntity>
     {
         private readonly CategoryAppService CategoryAppService;
 
         public ExecuteCategory() => CategoryAppService = new CategoryAppService(new CategoryService(new CategoryRepository()));
 
-        public void Add()
+        public void Add(CategoryEntity entity)
         {
             throw new System.NotImplementedException();
         }
 
-        public void Delete()
+        public void Delete(CategoryEntity entity)
         {
             throw new System.NotImplementedException();
         }
@@ -24,18 +26,35 @@ namespace App.Console.Executions
         public void List()
         {
             System.Console.WriteLine("Consultando...");
-
             var categories = CategoryAppService.GetList(c => c.Id > 0);
-            var isColumns = true;
+            ListCategories(categories);
+        }
 
+        public void Search(string name)
+        {
+            System.Console.WriteLine("Consultando...");
+            var categories = CategoryAppService.GetList(c => c.Name.Contains(name));
+            ListCategories(categories);
+        }
+
+        public void Update(CategoryEntity entity)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        private static void ListCategories(IEnumerable<CategoryEntity> categories)
+        {
             System.Console.Clear();
 
-            if (categories.Count() <= 0)
+            if (!categories.Any())
             {
                 System.Console.WriteLine("Sem registros!!!");
             }
             else
             {
+
+                var isColumns = true;
+
                 foreach (var c in categories)
                 {
                     if (isColumns)
@@ -61,16 +80,9 @@ namespace App.Console.Executions
                     System.Console.Write(c.Books.Count.ToString("000"));
                 }
             }
-        }
 
-        public void Search()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void Update()
-        {
-            throw new System.NotImplementedException();
+            System.Console.WriteLine("\n\nContinuar...");
+            System.Console.ReadKey();
         }
     }
 }

@@ -10,7 +10,11 @@ namespace Repository.Repositories
 {
     public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : EntityBase
     {
-        protected LibraryContext Context = new LibraryContext();
+        protected readonly LibraryContext Context;
+
+        private bool _disposed;
+
+        public RepositoryBase() => Context = new LibraryContext();
 
         public TEntity Add(TEntity entity)
         {
@@ -28,7 +32,7 @@ namespace Repository.Repositories
 
         public void Dispose()
         {
-            Context.Dispose();
+            Dispose(true);
             GC.SuppressFinalize(this);
         }
 
@@ -41,6 +45,21 @@ namespace Repository.Repositories
             Context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
             Context.SaveChanges();
             return true;
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (_disposed)
+            {
+                return;
+            }
+
+            if (disposing)
+            {
+                Context?.Dispose();
+            }
+
+            _disposed = true;
         }
     }
 }

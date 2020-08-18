@@ -9,6 +9,7 @@ namespace Application
 {
     public class AppServiceBase<TEntity> : IAppServiceBase<TEntity> where TEntity : EntityBase
     {
+        private bool _disposed;
         private readonly IServiceBase<TEntity> _service;
 
         public AppServiceBase(IServiceBase<TEntity> service)
@@ -26,7 +27,7 @@ namespace Application
 
         public void Dispose()
         {
-            _service.Dispose();
+            Dispose(true);
             GC.SuppressFinalize(this);
         }
 
@@ -38,6 +39,21 @@ namespace Application
         {
             _service.Update(entity);
             return true;
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (_disposed)
+            {
+                return;
+            }
+
+            if (disposing)
+            {
+                _service?.Dispose();
+            }
+
+            _disposed = true;
         }
     }
 }

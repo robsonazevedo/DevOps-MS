@@ -1,21 +1,23 @@
 ﻿using App.Console.Enumerators;
 using App.Console.Executions;
+using App.Console.View;
 
-namespace App.Console.Helper
+namespace App.Console
 {
-    public static class ExecuteOptionHelper
+    internal static class ExecuteOption
     {
         public static void ExecuteBookOption(MenuBookOptions menuBookOption)
         {
             var executeBook = new ExecuteBook();
-
+            var viewBook = new ViewBookMenu();
             System.Console.Clear();
 
             switch (menuBookOption)
             {
                 case MenuBookOptions.Search:
                     {
-                        executeBook.Search();
+                        var name = viewBook.ViewSearch();
+                        executeBook.Search(name);
                         break;
                     }
                 case MenuBookOptions.List:
@@ -25,17 +27,24 @@ namespace App.Console.Helper
                     }
                 case MenuBookOptions.Add:
                     {
-                        executeBook.Add();
+                        var book = viewBook.ViewAdd();
+                        executeBook.Add(book);
                         break;
                     }
                 case MenuBookOptions.Update:
                     {
-                        executeBook.Update();
+                        var book = viewBook.ViewUpdate();
+                        executeBook.Update(book);
                         break;
                     }
                 case MenuBookOptions.Delete:
                     {
-                        executeBook.Delete();
+                        var book = viewBook.ViewDelete();
+                        executeBook.Delete(book);
+                        break;
+                    }
+                case MenuBookOptions.Exit:
+                    {
                         break;
                     }
                 default:
@@ -48,14 +57,15 @@ namespace App.Console.Helper
         public static void ExecuteCategoryOption(MenuCategoryOptions menuCategoryOption)
         {
             var executeCategory = new ExecuteCategory();
-
+            var viewCategory = new ViewCategoryMenu();
             System.Console.Clear();
 
             switch (menuCategoryOption)
             {
                 case MenuCategoryOptions.Search:
                     {
-                        executeCategory.Search();
+                        var name = viewCategory.ViewSearch();
+                        executeCategory.Search(name);
                         break;
                     }
                 case MenuCategoryOptions.List:
@@ -65,17 +75,24 @@ namespace App.Console.Helper
                     }
                 case MenuCategoryOptions.Add:
                     {
-                        executeCategory.Add();
+                        var category = viewCategory.ViewAdd();
+                        executeCategory.Add(category);
                         break;
                     }
                 case MenuCategoryOptions.Update:
                     {
-                        executeCategory.Update();
+                        var category = viewCategory.ViewUpdate();
+                        executeCategory.Update(category);
                         break;
                     }
                 case MenuCategoryOptions.Delete:
                     {
-                        executeCategory.Delete();
+                        var category = viewCategory.ViewDelete();
+                        executeCategory.Delete(category);
+                        break;
+                    }
+                case MenuCategoryOptions.Exit:
+                    {
                         break;
                     }
                 default:

@@ -9,6 +9,7 @@
 = 3 - ADICIONAR                                         =
 = 4 - ATUALIZAR                                         =
 = 5 - EXCLUIR                                           =
+= 6 - VOLTAR                                            =
 =                                                       =
 = OPÇÃO: _                                              =
 =                                                       =

@@ -59,7 +59,11 @@
     <Compile Include="Executions\ExecuteBook.cs" />
     <Compile Include="Executions\ExecuteCategory.cs" />
     <Compile Include="Executions\IExecuteBase.cs" />
-    <Compile Include="Helper\ExecuteOptionHelper.cs" />
+    <Compile Include="ExecuteOption.cs" />
+    <Compile Include="View\IViewBase.cs" />
+    <Compile Include="Helper\SystemHelper.cs" />
+    <Compile Include="View\ViewBookMenu.cs" />
+    <Compile Include="View\ViewCategoryMenu.cs" />
     <Compile Include="Helper\ViewMenuHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

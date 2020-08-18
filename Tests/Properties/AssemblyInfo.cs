@@ -1,14 +1,14 @@
 using System.Reflection;
-using System.Runtime.CompilerServices;
+using System.Resources;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("Tests")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Library Tests")]
+[assembly: AssemblyDescription("Library Tests")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Tests")]
-[assembly: AssemblyCopyright("Copyright ©  2020")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCompany("Project Fro 2")]
+[assembly: AssemblyProduct("Library")]
+[assembly: AssemblyCopyright("Project Fro 2 © 2020")]
+[assembly: AssemblyTrademark("Project Fro 2")]
 [assembly: AssemblyCulture("")]
 
 [assembly: ComVisible(false)]
@@ -18,3 +18,4 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: NeutralResourcesLanguage("pt-BR")]

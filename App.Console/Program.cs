@@ -6,7 +6,7 @@ namespace App.Console
 {
     public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             try
             {
@@ -22,17 +22,13 @@ namespace App.Console
                         case MenuConsoleOptions.Book:
                             {
                                 var menuBookOption = ViewMenuHelper.ViewBookMenu();
-                                ExecuteOptionHelper.ExecuteBookOption(menuBookOption);
-                                System.Console.WriteLine("\n\nContinuar...");
-                                System.Console.ReadKey();
+                                ExecuteOption.ExecuteBookOption(menuBookOption);
                                 break;
                             }
                         case MenuConsoleOptions.Category:
                             {
                                 var menuCategoryOption = ViewMenuHelper.ViewCategoryMenu();
-                                ExecuteOptionHelper.ExecuteCategoryOption(menuCategoryOption);
-                                System.Console.WriteLine("\n\nContinuar...");
-                                System.Console.ReadKey();
+                                ExecuteOption.ExecuteCategoryOption(menuCategoryOption);
                                 break;
                             }
                         case MenuConsoleOptions.Exit:

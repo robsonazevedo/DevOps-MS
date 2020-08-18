@@ -1,6 +1,6 @@
 ﻿namespace App.Console.Enumerators
 {
-    public enum MenuConsoleOptions
+    internal enum MenuConsoleOptions
     {
         Book = 1,
         Category = 2,

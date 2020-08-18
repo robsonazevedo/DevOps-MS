@@ -1,22 +1,24 @@
 ﻿using Application;
+using Domain.Entities;
 using Domain.Services;
 using Repository.Repositories;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace App.Console.Executions
 {
-    public class ExecuteBook : IExecuteBase
+    internal class ExecuteBook : IExecuteBase<BookEntity>
     {
         private readonly BookAppService BookAppService;
 
         public ExecuteBook() => BookAppService = new BookAppService(new BookService(new BookRepository()));
 
-        public void Add()
+        public void Add(BookEntity entity)
         {
             throw new System.NotImplementedException();
         }
 
-        public void Delete()
+        public void Delete(BookEntity entity)
         {
             throw new System.NotImplementedException();
         }
@@ -24,13 +26,30 @@ namespace App.Console.Executions
         public void List()
         {
             System.Console.WriteLine("Consultando...");
-
             var books = BookAppService.GetList(c => c.Id > 0);
+            ListBooks(books);
+        }
+
+        public void Search(string name)
+        {
+            System.Console.WriteLine("Consultando...");
+            var books = BookAppService.GetList(c => c.Name.Contains(name));
+            ListBooks(books);
+        }
+
+
+        public void Update(BookEntity entity)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        private static void ListBooks(IEnumerable<BookEntity> books)
+        {
             var isColumns = true;
 
             System.Console.Clear();
 
-            if (books.Count() <= 0)
+            if (!books.Any())
             {
                 System.Console.WriteLine("Sem registros!!!");
             }
@@ -63,16 +82,9 @@ namespace App.Console.Executions
                     System.Console.Write(c.Categories.Count.ToString("000"));
                 }
             }
-        }
 
-        public void Search()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void Update()
-        {
-            throw new System.NotImplementedException();
+            System.Console.WriteLine("\n\nContinuar...");
+            System.Console.ReadKey();
         }
     }
 }

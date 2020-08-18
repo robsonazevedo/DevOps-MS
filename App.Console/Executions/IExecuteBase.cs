@@ -1,15 +1,17 @@
-﻿namespace App.Console.Executions
-{
-    public interface IExecuteBase
-    {
-        void Add();
+﻿using Domain.Entities;
 
-        void Delete();
+namespace App.Console.Executions
+{
+    internal interface IExecuteBase<TEntity> where TEntity : EntityBase
+    {
+        void Add(TEntity entity);
+
+        void Delete(TEntity entity);
 
         void List();
 
-        void Search();
+        void Search(string name);
 
-        void Update();
+        void Update(TEntity entity);
     }
 }
