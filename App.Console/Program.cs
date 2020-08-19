@@ -6,6 +6,10 @@ namespace App.Console
 {
     public class Program
     {
+        protected Program()
+        {
+        }
+
         public static void Main(string[] args)
         {
             try

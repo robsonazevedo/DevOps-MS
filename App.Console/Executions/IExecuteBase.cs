@@ -2,7 +2,7 @@
 
 namespace App.Console.Executions
 {
-    internal interface IExecuteBase<TEntity> where TEntity : EntityBase
+    internal interface IExecuteBase<in TEntity> where TEntity : EntityBase
     {
         void Add(TEntity entity);
 

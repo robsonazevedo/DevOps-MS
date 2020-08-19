@@ -2,7 +2,7 @@
 
 namespace App.Console.View
 {
-    internal interface IViewBase<TEntity> where TEntity : EntityBase
+    internal interface IViewBase<out TEntity> where TEntity : EntityBase
     {
         TEntity ViewAdd();
 

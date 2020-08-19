@@ -38,10 +38,5 @@ namespace Domain.Entities
 
             return CompareTo(other) == 0;
         }
-
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
     }
 }
