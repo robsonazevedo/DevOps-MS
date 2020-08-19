@@ -28,15 +28,5 @@ namespace Domain.Entities
 
             return count;
         }
-
-        public override bool Equals(object obj)
-        {
-            if (!(obj is EntityBase other))
-            {
-                return false;
-            }
-
-            return CompareTo(other) == 0;
-        }
     }
 }
