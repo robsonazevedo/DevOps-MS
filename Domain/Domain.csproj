@@ -38,6 +38,9 @@
     <Compile Include="Entities\BookEntity.cs" />
     <Compile Include="Entities\CategoryEntity.cs" />
     <Compile Include="Entities\EntityBase.cs" />
+    <Compile Include="Interfaces\AppServices\IAppServiceBase.cs" />
+    <Compile Include="Interfaces\AppServices\IBookAppService.cs" />
+    <Compile Include="Interfaces\AppServices\ICategoryAppService.cs" />
     <Compile Include="Interfaces\Repositories\IBookRepository.cs" />
     <Compile Include="Interfaces\Repositories\ICategoryRepository.cs" />
     <Compile Include="Interfaces\Services\IBookService.cs" />

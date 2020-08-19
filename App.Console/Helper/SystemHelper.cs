@@ -1,9 +1,13 @@
-﻿using System;
+﻿using IoC;
+using SimpleInjector;
+using System;
 
 namespace App.Console.Helper
 {
     internal static class SystemHelper
     {
+        public static Container Container { get; private set; } = ConfigurationIoC.Register();
+
         public static int GetOption()
         {
             var option = "";

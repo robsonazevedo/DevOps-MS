@@ -1,7 +1,7 @@
-﻿using Application;
+﻿using App.Console.Helper;
 using Domain.Entities;
+using Domain.Interfaces.AppServices;
 using Domain.Services;
-using Repository.Repositories;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,9 +9,9 @@ namespace App.Console.Executions
 {
     internal class ExecuteCategory : IExecuteBase<CategoryEntity>
     {
-        private readonly CategoryAppService CategoryAppService;
+        private readonly ICategoryAppService CategoryAppService;
 
-        public ExecuteCategory() => CategoryAppService = new CategoryAppService(new CategoryService(new CategoryRepository()));
+        public ExecuteCategory() => CategoryAppService = SystemHelper.Container.GetInstance<ICategoryAppService>();
 
         public void Add(CategoryEntity entity)
         {

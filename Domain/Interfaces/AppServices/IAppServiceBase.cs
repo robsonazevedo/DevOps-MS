@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace Application.Interfaces
+namespace Domain.Interfaces.AppServices
 {
     public interface IAppServiceBase<TEntity> : IDisposable where TEntity : EntityBase
     {

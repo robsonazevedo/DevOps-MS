@@ -1,5 +1,6 @@
 ﻿using App.Console.Enumerators;
 using App.Console.Helper;
+using IoC;
 using System;
 
 namespace App.Console

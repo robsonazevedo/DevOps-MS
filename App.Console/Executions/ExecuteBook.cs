@@ -1,7 +1,6 @@
-﻿using Application;
+﻿using App.Console.Helper;
 using Domain.Entities;
-using Domain.Services;
-using Repository.Repositories;
+using Domain.Interfaces.AppServices;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,9 +8,9 @@ namespace App.Console.Executions
 {
     internal class ExecuteBook : IExecuteBase<BookEntity>
     {
-        private readonly BookAppService BookAppService;
+        private readonly IBookAppService BookAppService;
 
-        public ExecuteBook() => BookAppService = new BookAppService(new BookService(new BookRepository()));
+        public ExecuteBook() => BookAppService = SystemHelper.Container.GetInstance<IBookAppService>();
 
         public void Add(BookEntity entity)
         {

@@ -6,6 +6,11 @@ namespace Domain.Services
 {
     public class CategoryService : ServiceBase<CategoryEntity>, ICategoryService
     {
-        public CategoryService(IRepositoryBase<CategoryEntity> repository) : base(repository) { }
+        private readonly ICategoryRepository _repository;
+
+        public CategoryService(ICategoryRepository repository) : base(repository)
+        {
+            _repository = repository;
+        }
     }
 }

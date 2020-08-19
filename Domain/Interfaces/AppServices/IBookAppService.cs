@@ -1,6 +1,6 @@
 ﻿using Domain.Entities;
 
-namespace Application.Interfaces
+namespace Domain.Interfaces.AppServices
 {
     public interface IBookAppService : IAppServiceBase<BookEntity>
     {
