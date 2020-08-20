@@ -1,6 +1,7 @@
 ﻿using Domain.Entities;
 using Domain.Interfaces.AppServices;
 using Domain.Interfaces.Services;
+using System.Collections.Generic;
 
 namespace Application
 {
@@ -11,6 +12,11 @@ namespace Application
         public BookAppService(IBookService service) : base(service)
         {
             _service = service;
+        }
+
+        public IEnumerable<BookEntity> GetByCategory(string category)
+        {
+            return _service.GetByCategory(category);
         }
     }
 }

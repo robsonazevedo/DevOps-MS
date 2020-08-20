@@ -1,6 +1,7 @@
 ﻿using Domain.Entities;
 using Domain.Interfaces.Repositories;
 using Domain.Interfaces.Services;
+using System.Collections.Generic;
 
 namespace Domain.Services
 {
@@ -10,6 +11,11 @@ namespace Domain.Services
 
         public BookService(IBookRepository repository) : base(repository) {
             _repository = repository;
+        }
+
+        public IEnumerable<BookEntity> GetByCategory(string category)
+        {
+            return _repository.GetByCategory(category);
         }
     }
 }
